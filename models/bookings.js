@@ -8,13 +8,13 @@ module.exports = () => {
         try{
             if(!licensenumber){
 
-                const bookings  = await db.get(collection);
+                const booking  = await db.get(collection);
     
-                return {bookings };
+                return {booking};
             }
     
-            const bookings = await db.get(collection, {licensenumber});
-            return {bookings};
+            const booking = await db.get(collection, {licensenumber});
+            return {booking};
         }catch(err){
             return {
                 error: err,
@@ -29,7 +29,7 @@ module.exports = () => {
             };
         }
         try{
-            const lincese = await db.get(COLLECTION, {
+            const license = await db.get(collection, {
                 licensenumber: licensenumber,
             });
             if (license.length > 0) {

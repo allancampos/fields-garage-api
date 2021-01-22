@@ -6,13 +6,17 @@ const users = require('./controllers/users')();
 const usersModel = require('./models/users')();
 const bookings = require('./controllers/bookings')();
 const items = require('./controllers/items')();
+const cors = require('cors');
 
 //define hostname and port
 const hostname = '0.0.0.0';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 // Authentication
 app.use(bp.json());
+
+//Allow acess
+app.use(cors());
 
 //Routes
 app.get('/',(req,res) => {

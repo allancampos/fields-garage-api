@@ -9,7 +9,7 @@ module.exports = () => {
 
                 const itemName  = await db.get(collection);
     
-                return {itemName };
+                return {itemName};
             }
     
             const itemName = await db.get(collection, {item});
