@@ -34,6 +34,7 @@ app.post('/users', users.addController);
 app.get('/bookings', bookings.getController);
 app.get('/bookings/:licensenumber', bookings.getBooking);
 app.post('/bookings', bookings.addController);
+app.post('/bookings/updateStatus', bookings.updateStatus);
 
 
 // Routes for Items

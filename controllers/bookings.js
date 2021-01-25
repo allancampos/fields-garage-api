@@ -31,7 +31,7 @@ module.exports = () => {
     }
 
     const updateStatus = async (req, res) => {
-        let {_id, status } = req.params;
+        let {_id, status } = req.body;
 
         const {results, error } = await bookings.status(_id,status);
         if (error) {
