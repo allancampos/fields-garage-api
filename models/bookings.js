@@ -22,7 +22,7 @@ module.exports = () => {
         }
     }
 
-    const add = async (status, mechanic, iduser, service, vehiclemake, vehiclemodel, enginetype,licensenumber, date, comments) => {
+    const add = async (status = 'booked', mechanic = 'Patrick', iduser = 'TODO log user', service, vehiclemake, vehiclemodel, enginetype,licensenumber, date, comments) => {
         if(!status || !mechanic || !iduser || !service || !vehiclemake || !vehiclemodel || !enginetype || !licensenumber || !date || !comments) {
             return {
                 error: 'fill in all fields',
@@ -47,8 +47,30 @@ module.exports = () => {
         }
     }
 
+    const status = async (_id, status) => {
+        if(!_id || !status) {
+            return {
+                error: 'fill in all fields',
+            };
+        }
+        
+        const pipeline = [
+            { _id },
+            { $set: { status } },
+        ];
+        try {
+            const results = await db.update(collection, pipeline);
+            return {results};
+        } catch (err) {
+            return {
+                error: err,
+            };
+        }
+    };
+
     return{
         get,
-        add
+        add,
+        status
     }
 }

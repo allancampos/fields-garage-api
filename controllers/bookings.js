@@ -30,9 +30,20 @@ module.exports = () => {
         res.json(result);
     }
 
+    const updateStatus = async (req, res) => {
+        let {_id, status } = req.params;
+
+        const {results, error } = await bookings.status(_id,status);
+        if (error) {
+            res.status(500), json({error,});
+        }
+        res.json(results);
+    };
+
     return{
         getController,
         getBooking,
-        addController
+        addController,
+        updateStatus
     }
 }
