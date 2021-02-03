@@ -3,7 +3,7 @@ const express = require('express');
 const app = (module.exports = express());
 const bp = require('body-parser');
 const users = require('./controllers/users')();
-const usersModel = require('./models/users')();
+//const usersModel = require('./models/users')();
 const bookings = require('./controllers/bookings')();
 const items = require('./controllers/items')();
 const cors = require('cors');
@@ -26,21 +26,22 @@ app.get('/',(req,res) => {
 })
 
 // Routes for Users
-app.get('/users', users.getController);
-app.get('/users/:email', users.getEmail);
+app.get('/users', users.getController); // get all users
+app.get('/users/:email', users.getEmail); // get user by email
 app.post('/users', users.addController);
+app.post('/users/staff', users.getStaff); // add user
 
 //Routes for Bookings
-app.get('/bookings', bookings.getController);
-app.get('/bookings/:licensenumber', bookings.getBooking);
-app.post('/bookings', bookings.addController);
-app.post('/bookings/updateStatus', bookings.updateStatus);
+app.get('/bookings', bookings.getController); // get all bookings
+app.get('/bookings/:licensenumber', bookings.getBooking); // get booking by license number
+app.post('/bookings', bookings.addController); // add booking
+app.post('/bookings/updateStatus', bookings.updateStatus); // update booking status
 
 
 // Routes for Items
-app.get('/items', items.getController);
-app.get('/items/:item', items.getItem);
-app.post('/items', items.addController);
+app.get('/items', items.getController); // get all items
+app.get('/items/:item', items.getItem); // get item buy item name
+app.post('/items', items.addController);// add item
 
 
 // Error

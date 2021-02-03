@@ -25,6 +25,21 @@ module.exports = () => {
             };
         }
     };
+
+    const getStaff = async (req,res) => {
+        
+        try{
+
+            const user = await db.get(collection, {name:'Jeff'});
+            return { user };
+
+        }catch(err){
+            console.log(err);
+            return {
+                error: err,
+            };
+        }
+    };
     
     const add = async (usertype, name, email, phone , address, key) => {
 
@@ -82,6 +97,7 @@ module.exports = () => {
     return{
         get,
         add,
-        getKey
+        getKey,
+        getStaff
     }
 }

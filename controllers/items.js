@@ -22,7 +22,7 @@ module.exports = () => {
     const addController = async (req,res) => {
         let {itemtype, item, cost} = req.body;
         
-        const { result, error } = await bookings.add(itemtype, item, cost);
+        const { result, error } = await items.add(itemtype, item, cost);
         if (error) {
             res.status(500).json({error,});
         }

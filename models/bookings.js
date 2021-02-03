@@ -1,5 +1,4 @@
 const db = require('../db')();
-const ObjectID = require('mongodb').ObjectID;
 const collection = 'bookings';
 
 module.exports = () => {
@@ -52,7 +51,7 @@ module.exports = () => {
             return {
                 error: 'fill in all fields',
             };
-        }
+        }sword
         
         const pipeline = [
             { _id },

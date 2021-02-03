@@ -1,5 +1,5 @@
 const db = require('../db')();
-const collection = 'items';
+const collection ='items';
 
 module.exports = () => {
     

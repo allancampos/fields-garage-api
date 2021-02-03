@@ -9,6 +9,14 @@ module.exports = () => {
         res.json(user);
     };
 
+    const getStaff = async(req, res) =>{
+        const {user,error} = await users.getStaff();
+        if(error){
+            res.status(500).json({error,});
+        }
+        res.json(user);
+    }
+
     const getEmail = async (req,res) => {
         const { user, error } = await users.get(req.params.email);
         if (error) {
@@ -32,6 +40,7 @@ module.exports = () => {
     return{
         getController,
         getEmail,
-        addController
+        addController,
+        getStaff
     }
 }
